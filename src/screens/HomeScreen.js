@@ -1,47 +1,35 @@
-import { useState } from "react";
 import { View, SafeAreaView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import RandomGif from "../components/RandomGif";
-import ScreenStyle from "../styles/ScreenStyle";
-import { fetchSearchResults } from "../api/giphyApiService";
 import SearchResults from "../components/SearchResults";
-import debounce from "lodash/debounce";
-import ErrorText from "../components/ErrorText";
+import ScreenStyle from "../styles/ScreenStyle";
+import { useRandomGif } from "../../hooks/useRandomGif";
+import { useSearchResults } from "../../hooks/useSearchResults";
 
-const HomeScreen = ({ navigation }) => {
-  const [searchResults, setSearchResults] = useState([]);
-  const [fetchSearchResultsError, setFetchSearchResultsError] = useState("");
-  const [showRandomGif, setShowRandomGif] = useState(true);
-
-  const handleOnSearch = debounce(async (searchText) => {
-    if (searchText == "") {
-      setShowRandomGif(true);
-      return;
-    }
-    setShowRandomGif(false);
-    try {
-      const searchResults = await fetchSearchResults(searchText);
-      setSearchResults(searchResults);
-      setFetchSearchResultsError("");
-    } catch (error) {
-      setSearchResults([]);
-      setFetchSearchResultsError(error.toString());
-      console.error("Error searching GIFs:", error);
-    }
-  }, 300);
-
-  const searchResultContent =
-    fetchSearchResultsError != "" ? (
-      <ErrorText error={fetchSearchResultsError} />
-    ) : (
-      <SearchResults gifs={searchResults} />
-    );
+const HomeScreen = () => {
+  const { randomGif, fetchRandomGifError } = useRandomGif();
+  const {
+    searchResults,
+    fetchSearchResultsError,
+    showRandomGif,
+    handleOnSearch,
+  } = useSearchResults();
 
   return (
     <SafeAreaView style={ScreenStyle.style}>
       <View>
         <SearchBar onSearch={handleOnSearch} />
-        {showRandomGif ? <RandomGif /> : searchResultContent}
+        {showRandomGif ? (
+          <RandomGif
+            randomGif={randomGif}
+            fetchRandomGifError={fetchRandomGifError}
+          />
+        ) : (
+          <SearchResults
+            searchResults={searchResults}
+            fetchSearchResultsError={fetchSearchResultsError}
+          />
+        )}
       </View>
     </SafeAreaView>
   );

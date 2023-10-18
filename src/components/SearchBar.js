@@ -12,6 +12,7 @@ const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const textInputRef = useRef(null);
+  const isCrossIconVisible = searchText != "";
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -22,13 +23,13 @@ const SearchBar = ({ onSearch }) => {
     handleSearch("");
   };
 
-  const handleFocus = useCallback(() => {
+  const handleFocus = () => {
     setIsFocused(true);
-  }, []);
+  };
 
-  const handleBlur = useCallback(() => {
+  const handleBlur = () => {
     setIsFocused(false);
-  }, []);
+  };
 
   const handleCancel = () => {
     handleSearch("");
@@ -53,9 +54,11 @@ const SearchBar = ({ onSearch }) => {
               onBlur={handleBlur}
             />
           </View>
-          <TouchableOpacity onPress={handleClear}>
-            <Entypo name="circle-with-cross" size={19} color="gray" />
-          </TouchableOpacity>
+          {isCrossIconVisible && (
+            <TouchableOpacity onPress={handleClear}>
+              <Entypo name="circle-with-cross" size={19} color="gray" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
       {isFocused && (

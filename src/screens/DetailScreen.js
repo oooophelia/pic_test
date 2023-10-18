@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const DetailScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { id, URL, title } = route.params;
+  const { url, title, shortenedUrl } = route.params;
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -31,7 +31,7 @@ const DetailScreen = ({ route }) => {
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <GifCard id={id} URL={URL} title={title} />
+      <GifCard url={url} title={title} shortenedUrl={shortenedUrl} />
     </SafeAreaView>
   );
 };

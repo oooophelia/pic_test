@@ -2,7 +2,7 @@ import { View, Text, Image, Dimensions, StyleSheet } from "react-native";
 
 const ScreenHeight = Dimensions.get("window").height;
 
-const GifCard = ({ url, title, shotenedUrl }) => {
+const GifCard = ({ url, title, shortenedUrl }) => {
   return (
     <View>
       <Image
@@ -10,9 +10,10 @@ const GifCard = ({ url, title, shotenedUrl }) => {
           uri: url,
         }}
         style={styles.gif}
+        accessibilityLabel="GIF Image"
       />
       <Text style={styles.title}>{title}</Text>
-      <Text>{shotenedUrl}</Text>
+      <Text>{shortenedUrl}</Text>
     </View>
   );
 };

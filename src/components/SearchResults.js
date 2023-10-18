@@ -1,4 +1,3 @@
-import GIFCard from "./GifCard";
 import TitleLabel from "./TitleLabel";
 import {
   View,
@@ -7,23 +6,25 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import ErrorText from "./ErrorText";
 import { useNavigation } from "@react-navigation/native";
 
-const SearchResults = ({ gifs }) => {
+const SearchResults = ({ searchResults, fetchSearchResultsError }) => {
   const navigation = useNavigation();
+  const hasFetchingFailed = fetchSearchResultsError != "";
 
   const renderImageItem = ({ item }) => {
     return (
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Detail", {
-            id: item.id,
-            URL: item.bitly_gif_url,
+            url: item.images.original.url,
             title: item.title,
+            shortenedUrl: item.bitly_gif_url,
           });
         }}
       >
-        <Image source={{ uri: item.images.original.url }} style={styles.gif} />
+        <Image source={{ uri: item.images.downsized.url }} style={styles.gif} />
       </TouchableOpacity>
     );
   };
@@ -31,12 +32,16 @@ const SearchResults = ({ gifs }) => {
   return (
     <View>
       <TitleLabel label={"Search results:"} />
-      <FlatList
-        data={gifs}
-        renderItem={renderImageItem}
-        keyExtractor={(item) => item.id}
-        numColumns={3}
-      />
+      {hasFetchingFailed ? (
+        <ErrorText error={fetchSearchResultsError} />
+      ) : (
+        <FlatList
+          data={searchResults}
+          renderItem={renderImageItem}
+          keyExtractor={(item) => item.id}
+          numColumns={3}
+        />
+      )}
     </View>
   );
 };
