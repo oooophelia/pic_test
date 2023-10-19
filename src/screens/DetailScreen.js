@@ -10,9 +10,14 @@ import ScreenStyle from "../styles/ScreenStyle";
 import GifCard from "../components/GifCard";
 import { useNavigation } from "@react-navigation/native";
 
+/**
+ * The DetailScreen displays a detailed information about a selected GIF, including its image, title, and rating.
+ *
+ * @param {object} route - The route object containing the url, title, shortenedUrl and rating of the selected gif.
+ */
 const DetailScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { url, title, shortenedUrl } = route.params;
+  const { url, title, shortenedUrl, rating } = route.params;
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -31,7 +36,12 @@ const DetailScreen = ({ route }) => {
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <GifCard url={url} title={title} shortenedUrl={shortenedUrl} />
+      <GifCard
+        url={url}
+        title={title}
+        shortenedUrl={shortenedUrl}
+        rating={rating}
+      />
     </SafeAreaView>
   );
 };

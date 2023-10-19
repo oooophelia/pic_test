@@ -6,6 +6,9 @@ import ScreenStyle from "../styles/ScreenStyle";
 import { useRandomGif } from "../../hooks/useRandomGif";
 import { useSearchResults } from "../../hooks/useSearchResults";
 
+/**
+ * The HomeScreen displays a search bar and either a random GIF or search results.
+ */
 const HomeScreen = () => {
   const { randomGif, fetchRandomGifError } = useRandomGif();
   const {

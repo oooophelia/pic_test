@@ -8,6 +8,12 @@ import {
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useRef, useCallback, useState } from "react";
 
+/**
+ * A searchBar with clear and cancel options.
+ *
+ * @param {function} onSearch - Callback function for handling search.
+ * @returns {JSX.Element} - A search bar component.
+ */
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState("");
   const [isFocused, setIsFocused] = useState(false);

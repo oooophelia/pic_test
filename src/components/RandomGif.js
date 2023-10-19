@@ -3,9 +3,16 @@ import GifCard from "./GifCard";
 import ErrorText from "./ErrorText";
 import TitleLabel from "./TitleLabel";
 
+/**
+ * The Random Gif component displays a randomly selected GIF or an error message.
+ *
+ * @param {object} randomGif - The randomly selected GIF data.
+ * @param {string} fetchRandomGifError - Error message if fetching the random GIF failed.
+ * @returns {JSX.Element} - A component displaying the random GIF or an error message.
+ */
 const RandomGif = ({ randomGif, fetchRandomGifError }) => {
-  const hasFetchingFailed = fetchRandomGifError != "";
-  const isGifLoaded = randomGif != null;
+  const hasFetchingFailed = fetchRandomGifError !== "";
+  const isGifLoaded = randomGif !== null;
 
   return (
     <View>
@@ -18,6 +25,7 @@ const RandomGif = ({ randomGif, fetchRandomGifError }) => {
             url={randomGif.images.downsized.url}
             title={randomGif.title}
             shortenedUrl={randomGif.bitly_url}
+            rating={randomGif.rating}
           />
         )
       )}

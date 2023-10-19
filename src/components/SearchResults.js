@@ -9,6 +9,13 @@ import {
 import ErrorText from "./ErrorText";
 import { useNavigation } from "@react-navigation/native";
 
+/**
+ * The SearchResults component displays gif search results in a grid of images.
+ *
+ * @param {Array} searchResults - An array of gifs.
+ * @param {string} fetchSearchResultsError - Error message when fetching results fails.
+ * @returns {JSX.Element} - A component displaying search results or an error message.
+ */
 const SearchResults = ({ searchResults, fetchSearchResultsError }) => {
   const navigation = useNavigation();
   const hasFetchingFailed = fetchSearchResultsError != "";
@@ -21,6 +28,7 @@ const SearchResults = ({ searchResults, fetchSearchResultsError }) => {
             url: item.images.original.url,
             title: item.title,
             shortenedUrl: item.bitly_gif_url,
+            rating: item.rating,
           });
         }}
       >
