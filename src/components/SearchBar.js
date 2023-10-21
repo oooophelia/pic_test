@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
-import { useRef, useCallback, useState } from "react";
+import { useRef, useState } from "react";
 
 /**
  * A searchBar with clear and cancel options.
@@ -91,10 +91,12 @@ const styles = StyleSheet.create({
   },
   searchBarContent: {
     flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   searchBarContentLeft: {
     flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   searchTextInput: {

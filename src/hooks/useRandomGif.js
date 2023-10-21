@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchRandomGif } from "../src/api/giphyApiService";
+import { fetchRandomGif } from "../api/giphyApiService";
 
 /**
  * A custom hook for fetching and managing random GIF data.
@@ -22,7 +22,7 @@ export const useRandomGif = () => {
 
   useEffect(() => {
     loadRandomGif();
-    const interval = setInterval(loadRandomGif, 1000000000000); // 10000
+    const interval = setInterval(loadRandomGif, 10000); // 10000
     return () => clearInterval(interval);
   }, []);
 

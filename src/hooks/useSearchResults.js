@@ -1,10 +1,8 @@
 import { useState } from "react";
 import debounce from "lodash/debounce";
-import { fetchSearchResults } from "../src/api/giphyApiService";
+import { fetchSearchResults } from "../api/giphyApiService";
 
 /**
- * useSearchResults Custom Hook
- *
  * A custom hook for handling search results and debounced search functionality.
  *
  * @returns {Object} - An object containing search results, error information, showRandomGif flag, and search handler.
