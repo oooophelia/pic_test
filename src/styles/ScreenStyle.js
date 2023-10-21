@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 const ScreenStyle = StyleSheet.create({
   style: {
     flex: 1,
+    marginTop: 40,
     marginHorizontal: 20,
   },
 });

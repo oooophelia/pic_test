@@ -1,8 +1,6 @@
 import { StyleSheet, Text } from "react-native";
 
 /**
- *
- *
  * The ErrorText component displays an error message in red text.
  *
  * @param {string} error - The error message to display.

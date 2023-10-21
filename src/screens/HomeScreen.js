@@ -3,8 +3,8 @@ import SearchBar from "../components/SearchBar";
 import RandomGif from "../components/RandomGif";
 import SearchResults from "../components/SearchResults";
 import ScreenStyle from "../styles/ScreenStyle";
-import { useRandomGif } from "../../hooks/useRandomGif";
-import { useSearchResults } from "../../hooks/useSearchResults";
+import { useRandomGif } from "../hooks/useRandomGif";
+import { useSearchResults } from "../hooks/useSearchResults";
 
 /**
  * The HomeScreen displays a search bar and either a random GIF or search results.

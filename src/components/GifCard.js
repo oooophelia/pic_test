@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 /**
  * The Gif Card component displays a Gif content with a title, shortened URL, and age restriction badge.
@@ -41,16 +41,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   rating: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 55,
+    height: 55,
+    borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#676766",
   },
   ratingText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
   },
 });
